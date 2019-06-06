@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller{
     /**
@@ -48,8 +49,8 @@ class UsuarioController extends Controller{
         $user->formacion_academica = $request->formacion_academica;
         $user->horas_nombramiento = $request->horas_nombramiento;
         $user->dictamen_categoria_docente = $request->dictamen_categoria_docente;
-        $user->rol = 1;
-        $user->password = $request->password;
+        $user->rol_id = 2;
+        $user->password = Hash::make($request->password);
         return response()->json($user->save());
     }
     public function edit(Request $request, $id){

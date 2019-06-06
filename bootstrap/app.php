@@ -57,6 +57,10 @@ $app->singleton(
 |
 */
 
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+ ]);
+ 
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
@@ -64,7 +68,9 @@ $app->singleton(
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
-
+$app->routeMiddleware([
+    'jwt.auth' => App\Http\Middleware\JwtMiddleware::class,
+]);
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers

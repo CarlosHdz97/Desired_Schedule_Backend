@@ -22,6 +22,9 @@ $router->group(['prefix' => 'academia'], function() use($router){
     $router->delete('/{id}', 'AcademiaController@destroy');
     $router->post('/{id}', 'AcademiaController@edit');
 });
+$router->group(['prefix' => 'logIn'], function() use($router){
+    $router->post('/', 'AuthController@authenticate');
+});
 $router->group(['prefix' => 'permiso'], function() use($router){
     $router->get('/', 'PermisoController@showAll');
     $router->get('/{id}', 'PermisoController@find');
